@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.sample.SpringRestSample.model.Aircraft;
@@ -51,6 +52,36 @@ public class CroController {
 		return "Deleted";
 	}
 	
+	
+	@GetMapping("/aircraftCd/{acCd}")
+	public List<Aircraft> getbyAircraftCd(@PathVariable String acCd){
+		List<Aircraft> acs=crodao.findByAircraftCd(acCd);
+		
+		return acs;
+	}
+	
+	@GetMapping("/aircraftgreaterthan/{acId}")
+	public List<Aircraft> getbyAircraftIdGreaterThan(@PathVariable int acId){
+		List<Aircraft> acs=crodao.findByaircraftIdGreaterThan(acId);
+		
+		return acs;
+	}
+	
+	
+	@GetMapping("/aircraftlessthan/{acId}")
+	public List<Aircraft> getbyAircraftIdLessThan(@PathVariable int acId){
+		List<Aircraft> acs=crodao.findByaircraftIdLessThan(acId);
+		
+		return acs;
+	}
+	
+	
+	@GetMapping("/aircraftsorted/{acCd}")
+	public List<Aircraft> getbyAircraftsorted(@PathVariable String acCd){
+		List<Aircraft> acs=crodao.findByAircraftCdSorted(acCd);
+		
+		return acs;
+	}
 	
 	
 }
